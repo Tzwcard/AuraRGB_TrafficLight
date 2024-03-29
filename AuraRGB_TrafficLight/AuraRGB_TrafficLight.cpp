@@ -9,7 +9,7 @@
 #define _TRAFFIC_LIGHT_YELLOW 0xafaf00
 #define _LED_UPDATE_INTERVAL_MS 20
 
-struct _CTX_TRAFFIC_LIGHT_PROGRAMMED_TIMING {
+struct _CTX_TRAFFIC_LIGHT_VARS {
 	int red_s;
 	int yellow_s;
 	int green_s;
@@ -26,7 +26,7 @@ static int lightup_traffic_led(void);
 static void print_traffic_vars(void);
 
 static uint8_t rgb_led[3] = { 0 };
-static _CTX_TRAFFIC_LIGHT_PROGRAMMED_TIMING rgb_timing;
+static _CTX_TRAFFIC_LIGHT_VARS rgb_timing;
 
 int main(int argc, char *argv[])
 {
@@ -54,7 +54,7 @@ static void print_traffic_vars(void)
 
 static int init_traffic_vars(void)
 {
-	memset(&rgb_timing, 0, sizeof(_CTX_TRAFFIC_LIGHT_PROGRAMMED_TIMING));
+	memset(&rgb_timing, 0, sizeof(_CTX_TRAFFIC_LIGHT_VARS));
 
 	rgb_timing.red_countdown_s = 13;
 	rgb_timing.green_countdown_s = 11;
